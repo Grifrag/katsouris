@@ -42,7 +42,7 @@ export default function ContactForm() {
         <label className="block text-[11px] font-bold text-navy-900 uppercase tracking-wide mb-1.5">
           Προέλευση → Προορισμός <span className="text-red-500">*</span>
         </label>
-        <input name="route" type="text" placeholder="π.χ. Αθήνα → Ρόδος" required className={inputClass} />
+        <input name="route" type="text" placeholder="π.χ. Αθήνα → Θεσσαλονίκη" required className={inputClass} />
       </div>
       <div>
         <label className="block text-[11px] font-bold text-navy-900 uppercase tracking-wide mb-1.5">

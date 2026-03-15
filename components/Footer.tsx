@@ -1,6 +1,6 @@
 import { PRIMARY_EMAIL, PRIMARY_PHONE, PRIMARY_TEL } from '@/lib/constants'
 
-const FOOTER_SERVICES = ['Εντός Αττικής', 'Πανελλαδικές Μεταφορές', 'Νησιά Αιγαίου', 'Βαρέα Φορτία', 'Μετακομίσεις']
+const FOOTER_SERVICES = ['Εντός Αττικής', 'Πανελλαδικές Μεταφορές', 'Βαρέα Φορτία', 'Μετακομίσεις', 'Αποθήκευση']
 const FOOTER_COMPANY = ['Σχετικά με εμάς', 'Επικοινωνία']
 
 export default function Footer() {
