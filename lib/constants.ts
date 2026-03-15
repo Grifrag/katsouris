@@ -52,20 +52,10 @@ export const WHY_US_ITEMS = [
 export const STATS = [
   { value: '30+', label: 'Χρόνια στον κλάδο' },
   { value: '500+', label: 'Ενεργοί πελάτες' },
-  { value: '4', label: 'Ζώνες κάλυψης' },
+  { value: '🇬🇷', label: 'Πανελλαδική κάλυψη' },
   { value: '98%', label: 'Ικανοποίηση πελατών' },
 ]
 
-export const OFFICES = [
-  { city: 'Αθήνα', icon: '🏛️', contact: 'Ι. Κατσούρης & Υιοί', phone: '210 347 9178', tel: '2103479178' },
-]
-
-export const COVERAGE_ZONES = [
-  { region: 'Αττική', icon: '🏛️', description: 'Καθημερινά δρομολόγια εντός λεκανοπεδίου.' },
-  { region: 'Βόρεια Ελλάδα', icon: '🗺️', description: 'Θεσσαλονίκη, Σέρρες, Κοζάνη και περιοχές.' },
-  { region: 'Κεντρική Ελλάδα', icon: '🌄', description: 'Λάρισα, Βόλος, Λαμία και περιοχές.' },
-  { region: 'Πελοπόννησος & Δυτ. Ελλάδα', icon: '🏺', description: 'Πάτρα, Καλαμάτα, Τρίπολη και περιοχές.' },
-]
 
 export const CARGO_TYPES = [
   'Παλέτες',
