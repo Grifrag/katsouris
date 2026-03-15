@@ -3,6 +3,8 @@ import Nav from '@/components/Nav'
 import Services from '@/components/Services'
 import WhyUs from '@/components/WhyUs'
 import Coverage from '@/components/Coverage'
+import Footer from '@/components/Footer'
+
 export default function Home() {
   return (
     <main>
@@ -11,6 +13,7 @@ export default function Home() {
       <Services />
       <WhyUs />
       <Coverage />
+      <Footer />
     </main>
   )
 }
