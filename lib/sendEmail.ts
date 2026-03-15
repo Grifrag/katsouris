@@ -1,7 +1,3 @@
-import { Resend } from 'resend'
-
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export interface ContactFormData {
   name: string
   phone: string
@@ -11,22 +7,26 @@ export interface ContactFormData {
 }
 
 export async function sendContactEmail(data: ContactFormData): Promise<void> {
-  const recipient = process.env.CONTACT_EMAIL
-  if (!recipient) throw new Error('CONTACT_EMAIL env var not set')
+  const apiKey = process.env.WEB3FORMS_ACCESS_KEY
+  if (!apiKey) throw new Error('WEB3FORMS_ACCESS_KEY env var not set')
 
-  await resend.emails.send({
-    from: 'onboarding@resend.dev', // TODO(pre-deploy): Replace with verified domain sender
-    to: recipient,
+  const body = {
+    access_key: apiKey,
     subject: `Νέο αίτημα προσφοράς — ${data.name}`,
-    html: `
-      <h2>Νέο αίτημα προσφοράς</h2>
-      <table cellpadding="8" style="border-collapse:collapse;">
-        <tr><td><strong>Όνομα:</strong></td><td>${data.name}</td></tr>
-        <tr><td><strong>Τηλέφωνο:</strong></td><td>${data.phone}</td></tr>
-        <tr><td><strong>Διαδρομή:</strong></td><td>${data.route}</td></tr>
-        <tr><td><strong>Είδος φορτίου:</strong></td><td>${data.cargoType}</td></tr>
-        ${data.notes ? `<tr><td><strong>Σημειώσεις:</strong></td><td>${data.notes}</td></tr>` : ''}
-      </table>
-    `,
+    from_name: 'Αιγαιομεταφορική — Φόρμα Επικοινωνίας',
+    name: data.name,
+    phone: data.phone,
+    route: data.route,
+    cargoType: data.cargoType,
+    ...(data.notes ? { notes: data.notes } : {}),
+  }
+
+  const res = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(body),
   })
+
+  const json = await res.json()
+  if (!json.success) throw new Error(json.message ?? 'Web3Forms error')
 }
