@@ -80,50 +80,32 @@ git commit -m "chore: scaffold Next.js + Tailwind + Resend"
 
 ### Task 2: Configure fonts, colors, and global layout
 
+> **Note:** The project uses Tailwind v4 (CSS-first configuration). There is no `tailwind.config.ts`.
+> Brand tokens are defined via `@theme` in `globals.css`. The `@tailwind base/components/utilities`
+> directives do NOT work in v4 — use `@import "tailwindcss"` instead.
+
 **Files:**
 - Modify: `app/layout.tsx`
 - Modify: `app/globals.css`
-- Modify: `tailwind.config.ts`
 
-- [ ] **Step 1: Update `tailwind.config.ts` with brand colors**
-
-```ts
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
-  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
-  theme: {
-    extend: {
-      colors: {
-        navy: {
-          950: '#060e1a',
-          900: '#0a1628',
-          800: '#0d2040',
-        },
-        gold: {
-          400: '#f0b429',
-        },
-      },
-      fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-      },
-    },
-  },
-  plugins: [],
-}
-
-export default config
-```
-
-- [ ] **Step 2: Update `app/globals.css`**
+- [ ] **Step 1: Replace `app/globals.css` with brand tokens and clean defaults**
 
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors */
+  --color-navy-950: #060e1a;
+  --color-navy-900: #0a1628;
+  --color-navy-800: #0d2040;
+  --color-gold-400: #f0b429;
+
+  /* Font */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
 ```
 
-- [ ] **Step 3: Update `app/layout.tsx`**
+- [ ] **Step 2: Update `app/layout.tsx`**
 
 ```tsx
 import type { Metadata } from 'next'
@@ -158,18 +140,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-- [ ] **Step 4: Verify build passes**
+- [ ] **Step 3: Verify build passes**
 
 ```bash
 npm run build
 ```
 Expected: `✓ Compiled successfully`
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 4: Commit**
 
 ```bash
-git add app/layout.tsx app/globals.css tailwind.config.ts
-git commit -m "feat: configure Inter font, brand colors, metadata"
+git add app/layout.tsx app/globals.css
+git commit -m "feat: configure Inter font, brand colors (Tailwind v4), metadata"
 ```
 
 ---
